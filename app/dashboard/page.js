@@ -1,13 +1,11 @@
-// app/layout.js
-import '../styles/globals.css'
-import { AuthWrapper } from '../components/AuthWrapper'
+// app/dashboard/page.js
+import '../../styles/globals.css'  // Update the import path
+import ClientAuthWrapper from '../../components/ClientAuthWrapper'
 
-export default function RootLayout({ children }) {
+export default function DashboardPage() {
   return (
-    <html lang="en">
-      <body>
-        <AuthWrapper>{children}</AuthWrapper>
-      </body>
-    </html>
+    <ClientAuthWrapper>
+      {/* Your dashboard content */}
+    </ClientAuthWrapper>
   )
 }

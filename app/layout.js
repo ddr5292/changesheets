@@ -1,12 +1,12 @@
 // app/layout.js
+import { Providers } from './providers'
 import '../styles/globals.css'
-import { AuthWrapper } from '../components/AuthWrapper'
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <AuthWrapper>{children}</AuthWrapper>
+        <Providers>{children}</Providers>
       </body>
     </html>
   )

@@ -1,8 +1,23 @@
 // components/AuthWrapper.js
 'use client'
 
-import { SessionProvider } from 'next-auth/react'
+import { useSession } from 'next-auth/react'
+import { useRouter } from "next/navigation"
 
-export function AuthWrapper({ children }) {
-  return <SessionProvider>{children}</SessionProvider>
+const AuthWrapper = ({ children }) => {
+  const { data: session, status } = useSession()
+  const router = useRouter()
+
+  if (status === "loading") {
+    return <p>Loading...</p>
+  }
+
+  if (!session) {
+    router.push("/login")
+    return null
+  }
+
+  return <>{children}</>
 }
+
+export default AuthWrapper

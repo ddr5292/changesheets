@@ -1,6 +1,6 @@
 // app/api/meetings/route.js
 import { getServerSession } from 'next-auth/next'
-import { authOptions } from '../auth/[...nextauth]/route'
+import { authOptions } from '../../../lib/auth'
 import { getGoogleCalendarEvents } from '../../../lib/googleCalendar'
 import { supabase } from '../../../lib/db'
 
