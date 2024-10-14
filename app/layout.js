@@ -1,6 +1,6 @@
 // app/layout.js
 import { Providers } from './providers'
-import '../styles/globals.css'
+import './globals.css'
 
 export default function RootLayout({ children }) {
   return (
