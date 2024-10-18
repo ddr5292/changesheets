@@ -1,3 +1,4 @@
+// components/RegisterForm.js
 'use client'
 
 import { useState } from 'react'
@@ -6,15 +7,20 @@ import * as Yup from 'yup'
 import { signIn } from 'next-auth/react'
 import Link from 'next/link'
 
-const LoginForm = ({ callbackUrl = '/dashboard' }) => {
+const RegisterForm = ({ callbackUrl }) => {
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [message, setMessage] = useState('')
 
-    const handleEmailSignIn = async (email) => {
+    const handleRegister = async (email, name) => {
         setIsSubmitting(true)
         setMessage('')
 
         try {
+            // Here you would typically make an API call to create the user
+            // For this example, we'll simulate it with a timeout
+            await new Promise(resolve => setTimeout(resolve, 1000))
+
+            // After creating the user, send a sign-in link
             const result = await signIn('email', {
                 email: email,
                 redirect: false,
@@ -22,9 +28,9 @@ const LoginForm = ({ callbackUrl = '/dashboard' }) => {
             })
 
             if (result.error) {
-                setMessage('Error sending sign-in link. Please try again.')
+                setMessage('Error registering. Please try again.')
             } else {
-                setMessage('Check your email for the sign-in link!')
+                setMessage('Registration successful! Check your email for the sign-in link.')
             }
         } catch (error) {
             setMessage('An unexpected error occurred. Please try again.')
@@ -33,45 +39,49 @@ const LoginForm = ({ callbackUrl = '/dashboard' }) => {
         setIsSubmitting(false)
     }
 
+    const handleGoogleSignIn = () => {
+        signIn('google', { callbackUrl: callbackUrl })
+    }
+
     const formik = useFormik({
         initialValues: {
             email: '',
+            name: '',
         },
         validationSchema: Yup.object({
             email: Yup.string().email('Invalid email address').required('Required'),
+            name: Yup.string().required('Required'),
         }),
         onSubmit: async (values) => {
-            await handleEmailSignIn(values.email)
+            await handleRegister(values.email, values.name)
         },
     })
-
-    const handleGoogleSignIn = async () => {
-        try {
-            const result = await signIn('google', {
-                callbackUrl: callbackUrl,
-                redirect: false,
-            });
-            if (result?.error) {
-                console.error('Sign-in error:', result.error);
-            } else if (result?.url) {
-                console.log('Redirecting to:', result.url);
-                window.location.href = result.url;
-            }
-        } catch (error) {
-            console.error('Unexpected error during sign-in:', error);
-        }
-    };
 
     return (
         <div className="flex items-center justify-center bg-gray-50 py-24 px-4 sm:px-6 lg:px-8">
             <div className="max-w-md w-full space-y-8">
                 <div>
                     <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-                        Sign in to your account
+                        Create your account
                     </h2>
                 </div>
                 <form className="mt-8 space-y-6" onSubmit={formik.handleSubmit}>
                     <div className="rounded-md shadow-sm -space-y-px">
+                        <div>
+                            <label htmlFor="name" className="sr-only">
+                                Name
+                            </label>
+                            <input
+                                id="name"
+                                name="name"
+                                type="text"
+                                autoComplete="name"
+                                required
+                                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                                placeholder="Name"
+                                {...formik.getFieldProps('name')}
+                            />
+                        </div>
                         <div>
                             <label htmlFor="email-address" className="sr-only">
                                 Email address
@@ -82,15 +92,19 @@ const LoginForm = ({ callbackUrl = '/dashboard' }) => {
                                 type="email"
                                 autoComplete="email"
                                 required
-                                className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                                 placeholder="Email address"
                                 {...formik.getFieldProps('email')}
                             />
                         </div>
-                        {formik.touched.email && formik.errors.email && (
-                            <div className="text-red-500 text-xs mt-1">{formik.errors.email}</div>
-                        )}
                     </div>
+
+                    {formik.touched.name && formik.errors.name && (
+                        <div className="text-red-500 text-xs mt-1">{formik.errors.name}</div>
+                    )}
+                    {formik.touched.email && formik.errors.email && (
+                        <div className="text-red-500 text-xs mt-1">{formik.errors.email}</div>
+                    )}
 
                     {message && (
                         <div className={`text-sm ${message.includes('Error') ? 'text-red-500' : 'text-green-500'}`}>
@@ -104,7 +118,7 @@ const LoginForm = ({ callbackUrl = '/dashboard' }) => {
                             disabled={isSubmitting}
                             className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
                         >
-                            {isSubmitting ? 'Sending...' : 'Send Sign-In Link'}
+                            {isSubmitting ? 'Registering...' : 'Register'}
                         </button>
                     </div>
                 </form>
@@ -131,16 +145,16 @@ const LoginForm = ({ callbackUrl = '/dashboard' }) => {
                                 <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
                                 <path d="M1 1h22v22H1z" fill="none" />
                             </svg>
-                            Sign in with Google
+                            Sign up with Google
                         </button>
                     </div>
                 </div>
 
                 <div className="text-center mt-4">
                     <p className="text-sm text-gray-600">
-                        Don't have an account?{' '}
-                        <Link href="/register" className="font-medium text-indigo-600 hover:text-indigo-500">
-                            Register here
+                        Already have an account?{' '}
+                        <Link href="/login" className="font-medium text-indigo-600 hover:text-indigo-500">
+                            Sign in here
                         </Link>
                     </p>
                 </div>
@@ -148,5 +162,6 @@ const LoginForm = ({ callbackUrl = '/dashboard' }) => {
         </div>
     )
 }
-export default LoginForm
+
+export default RegisterForm
 

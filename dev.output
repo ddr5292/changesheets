@@ -1,0 +1,185 @@
+
+> nextjs-app@0.1.0 dev
+> next dev
+
+  ▲ Next.js 14.2.15
+  - Local:        http://localhost:3000
+  - Environments: .env.local, .env
+
+ ✓ Starting...
+ ✓ Ready in 18.6s
+ ○ Compiling /api/auth/[...nextauth] ...
+ ✓ Compiled /api/auth/[...nextauth] in 2.6s (1129 modules)
+ GET /login?_rsc=8ipd9 200 in 39ms
+ GET /api/auth/providers 200 in 4076ms
+ GET /api/auth/csrf 200 in 62ms
+ POST /api/auth/signin/google 200 in 160ms
+prisma:query BEGIN
+prisma:query DEALLOCATE ALL
+prisma:query SELECT "public"."accounts"."id", "public"."accounts"."userId", "public"."accounts"."type", "public"."accounts"."provider", "public"."accounts"."providerAccountId", "public"."accounts"."refresh_token", "public"."accounts"."access_token", "public"."accounts"."expires_at", "public"."accounts"."token_type", "public"."accounts"."scope", "public"."accounts"."id_token", "public"."accounts"."session_state" FROM "public"."accounts" WHERE (("public"."accounts"."provider" = $1 AND "public"."accounts"."providerAccountId" = $2) AND 1=1) LIMIT $3 OFFSET $4
+prisma:query SELECT "public"."users"."id", "public"."users"."name", "public"."users"."email", "public"."users"."emailVerified", "public"."users"."image" FROM "public"."users" WHERE "public"."users"."id" IN ($1) OFFSET $2
+prisma:query COMMIT
+prisma:query BEGIN
+prisma:query DEALLOCATE ALL
+prisma:query SELECT "public"."accounts"."id", "public"."accounts"."userId", "public"."accounts"."type", "public"."accounts"."provider", "public"."accounts"."providerAccountId", "public"."accounts"."refresh_token", "public"."accounts"."access_token", "public"."accounts"."expires_at", "public"."accounts"."token_type", "public"."accounts"."scope", "public"."accounts"."id_token", "public"."accounts"."session_state" FROM "public"."accounts" WHERE (("public"."accounts"."provider" = $1 AND "public"."accounts"."providerAccountId" = $2) AND 1=1) LIMIT $3 OFFSET $4
+prisma:query SELECT "public"."users"."id", "public"."users"."name", "public"."users"."email", "public"."users"."emailVerified", "public"."users"."image" FROM "public"."users" WHERE "public"."users"."id" IN ($1) OFFSET $2
+prisma:query COMMIT
+ GET /api/auth/callback/google?state=iarSCYvYyXhEuU7b_jReUqfip0d7CdmkYoged2sFRdk&code=4%2F0AVG7fiSEmM2KHUiPeZvWIpPxY8R7gjeClGinMUUjHiaG3hOsu6jEWvgMynnqnHN4W1jmxw&scope=email+profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&authuser=3&prompt=consent 302 in 1526ms
+ ○ Compiling /middleware ...
+ ✓ Compiled /middleware in 613ms (174 modules)
+ ○ Compiling /dashboard ...
+ ✓ Compiled /dashboard in 788ms (1138 modules)
+ ⨯ Error: Invalid src prop (https://lh3.googleusercontent.com/a/ACg8ocLyzkNLEQI7gud7fom1H-_iihTo66p0nNVW7V8uiNdlOnoLmR94=s96-c) on `next/image`, hostname "lh3.googleusercontent.com" is not configured under images in your `next.config.js`
+See more info: https://nextjs.org/docs/messages/next-image-unconfigured-host
+    at Array.map (<anonymous>)
+digest: "3983692085"
+ GET /dashboard 500 in 1258ms
+ ⚠ Found a change in next.config.js. Restarting the server to apply the changes...
+  ▲ Next.js 14.2.15
+  - Local:        http://localhost:3000
+  - Environments: .env.local, .env
+
+ ✓ Starting...
+ ✓ Ready in 19.5s
+ ○ Compiling /middleware ...
+ ✓ Compiled /middleware in 1641ms (174 modules)
+ ○ Compiling /dashboard ...
+ ✓ Compiled /dashboard in 8s (877 modules)
+ GET /dashboard 200 in 8857ms
+ ⚠ The "images.domains" configuration is deprecated. Please use "images.remotePatterns" configuration instead.
+ ○ Compiling /api/auth/[...nextauth] ...
+ ✓ Compiled /api/auth/[...nextauth] in 5s (575 modules)
+ GET /api/auth/session 200 in 6119ms
+ GET /api/auth/signin?callbackUrl=%2Fdashboard 302 in 77ms
+ ○ Compiling /login ...
+ ✓ Compiled /login in 1988ms (1152 modules)
+ GET /login?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2Fdashboard 200 in 2631ms
+ GET /api/auth/session 200 in 57ms
+ GET /api/auth/providers 200 in 68ms
+ GET /api/auth/csrf 200 in 21ms
+ POST /api/auth/signin/google 200 in 94ms
+prisma:query BEGIN
+prisma:query DEALLOCATE ALL
+prisma:query SELECT "public"."accounts"."id", "public"."accounts"."userId", "public"."accounts"."type", "public"."accounts"."provider", "public"."accounts"."providerAccountId", "public"."accounts"."refresh_token", "public"."accounts"."access_token", "public"."accounts"."expires_at", "public"."accounts"."token_type", "public"."accounts"."scope", "public"."accounts"."id_token", "public"."accounts"."session_state" FROM "public"."accounts" WHERE (("public"."accounts"."provider" = $1 AND "public"."accounts"."providerAccountId" = $2) AND 1=1) LIMIT $3 OFFSET $4
+prisma:query SELECT "public"."users"."id", "public"."users"."name", "public"."users"."email", "public"."users"."emailVerified", "public"."users"."image" FROM "public"."users" WHERE "public"."users"."id" IN ($1) OFFSET $2
+prisma:query COMMIT
+prisma:query BEGIN
+prisma:query DEALLOCATE ALL
+prisma:query SELECT "public"."accounts"."id", "public"."accounts"."userId", "public"."accounts"."type", "public"."accounts"."provider", "public"."accounts"."providerAccountId", "public"."accounts"."refresh_token", "public"."accounts"."access_token", "public"."accounts"."expires_at", "public"."accounts"."token_type", "public"."accounts"."scope", "public"."accounts"."id_token", "public"."accounts"."session_state" FROM "public"."accounts" WHERE (("public"."accounts"."provider" = $1 AND "public"."accounts"."providerAccountId" = $2) AND 1=1) LIMIT $3 OFFSET $4
+prisma:query SELECT "public"."users"."id", "public"."users"."name", "public"."users"."email", "public"."users"."emailVerified", "public"."users"."image" FROM "public"."users" WHERE "public"."users"."id" IN ($1) OFFSET $2
+prisma:query COMMIT
+ GET /api/auth/callback/google?state=4Tlvr_tbJc1-pseoP-OCRbvXRQ0OWIomuZ2SqIo6oto&code=4%2F0AVG7fiRVriNad2a8lV5McF-EnaUQY6eVgKdzmYizEvxJ1bD-OgAnFJKNWVs-6epTuGYNkw&scope=email+profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&authuser=3&prompt=consent 302 in 1430ms
+ GET /dashboard 200 in 78ms
+ GET /api/auth/session 200 in 70ms
+ GET /api/auth/signin?callbackUrl=%2Fdashboard 302 in 65ms
+ GET /login?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2Fdashboard 200 in 61ms
+ GET /api/auth/session 200 in 66ms
+ GET /api/auth/providers 200 in 95ms
+ GET /api/auth/csrf 200 in 25ms
+ POST /api/auth/signin/google 200 in 95ms
+prisma:query SELECT 1
+prisma:query BEGIN
+prisma:query DEALLOCATE ALL
+prisma:query SELECT "public"."accounts"."id", "public"."accounts"."userId", "public"."accounts"."type", "public"."accounts"."provider", "public"."accounts"."providerAccountId", "public"."accounts"."refresh_token", "public"."accounts"."access_token", "public"."accounts"."expires_at", "public"."accounts"."token_type", "public"."accounts"."scope", "public"."accounts"."id_token", "public"."accounts"."session_state" FROM "public"."accounts" WHERE (("public"."accounts"."provider" = $1 AND "public"."accounts"."providerAccountId" = $2) AND 1=1) LIMIT $3 OFFSET $4
+prisma:query SELECT "public"."users"."id", "public"."users"."name", "public"."users"."email", "public"."users"."emailVerified", "public"."users"."image" FROM "public"."users" WHERE "public"."users"."id" IN ($1) OFFSET $2
+prisma:query COMMIT
+prisma:query BEGIN
+prisma:query DEALLOCATE ALL
+prisma:query SELECT "public"."accounts"."id", "public"."accounts"."userId", "public"."accounts"."type", "public"."accounts"."provider", "public"."accounts"."providerAccountId", "public"."accounts"."refresh_token", "public"."accounts"."access_token", "public"."accounts"."expires_at", "public"."accounts"."token_type", "public"."accounts"."scope", "public"."accounts"."id_token", "public"."accounts"."session_state" FROM "public"."accounts" WHERE (("public"."accounts"."provider" = $1 AND "public"."accounts"."providerAccountId" = $2) AND 1=1) LIMIT $3 OFFSET $4
+prisma:query SELECT "public"."users"."id", "public"."users"."name", "public"."users"."email", "public"."users"."emailVerified", "public"."users"."image" FROM "public"."users" WHERE "public"."users"."id" IN ($1) OFFSET $2
+prisma:query COMMIT
+ GET /api/auth/callback/google?state=6tD5QxpJpfaGzlyb1jpN8ZiyOiMi3mg80EOEDrj1tQQ&code=4%2F0AVG7fiSOvPDlsskxT5DDezTkxvIqBVoA8rI-oQIUwgB2cqaH8WBoqXnneMwDpd1_j72xMg&scope=email+profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&authuser=2&hd=rapidsyouthsoccer.org&prompt=consent 302 in 935ms
+ GET /dashboard 200 in 94ms
+ GET /api/auth/session 200 in 39ms
+prisma:query SELECT 1
+prisma:query BEGIN
+prisma:query DEALLOCATE ALL
+prisma:query DELETE FROM "public"."verification_tokens" WHERE (("public"."verification_tokens"."identifier" = $1 AND "public"."verification_tokens"."token" = $2) AND 1=1) RETURNING "public"."verification_tokens"."token", "public"."verification_tokens"."identifier", "public"."verification_tokens"."expires"
+prisma:query ROLLBACK
+prisma:error 
+Invalid `prisma.verificationToken.delete()` invocation:
+
+
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+ GET /api/auth/callback/email?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2Fdashboard&token=618c07c17ba336f0f5364dd83a5cca45636aae08cee862f1ab04781b91ecdbea&email=james.a.whalen%40datadesignresources.com 302 in 331ms
+ GET /api/auth/error?error=Verification 403 in 48ms
+ GET /api/auth/signin?callbackUrl=%2Fdashboard 302 in 109ms
+ GET /login?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2Fdashboard 200 in 81ms
+ GET /api/auth/session 200 in 46ms
+ GET /api/auth/providers 200 in 57ms
+ GET /api/auth/csrf 200 in 22ms
+prisma:query SELECT 1
+prisma:query BEGIN
+prisma:query DEALLOCATE ALL
+prisma:query SELECT "public"."users"."id", "public"."users"."name", "public"."users"."email", "public"."users"."emailVerified", "public"."users"."image" FROM "public"."users" WHERE ("public"."users"."email" = $1 AND 1=1) LIMIT $2 OFFSET $3
+prisma:query COMMIT
+prisma:query BEGIN
+prisma:query DEALLOCATE ALL
+prisma:query INSERT INTO "public"."verification_tokens" ("identifier","token","expires") VALUES ($1,$2,$3) RETURNING "public"."verification_tokens"."token", "public"."verification_tokens"."identifier", "public"."verification_tokens"."expires"
+prisma:query COMMIT
+ POST /api/auth/signin/email 200 in 1830ms
+ GET /api/auth/session 200 in 42ms
+prisma:query BEGIN
+prisma:query DEALLOCATE ALL
+prisma:query DELETE FROM "public"."verification_tokens" WHERE (("public"."verification_tokens"."identifier" = $1 AND "public"."verification_tokens"."token" = $2) AND 1=1) RETURNING "public"."verification_tokens"."token", "public"."verification_tokens"."identifier", "public"."verification_tokens"."expires"
+prisma:query COMMIT
+prisma:query BEGIN
+prisma:query DEALLOCATE ALL
+prisma:query SELECT "public"."users"."id", "public"."users"."name", "public"."users"."email", "public"."users"."emailVerified", "public"."users"."image" FROM "public"."users" WHERE ("public"."users"."email" = $1 AND 1=1) LIMIT $2 OFFSET $3
+prisma:query COMMIT
+prisma:query BEGIN
+prisma:query DEALLOCATE ALL
+prisma:query SELECT "public"."users"."id", "public"."users"."name", "public"."users"."email", "public"."users"."emailVerified", "public"."users"."image" FROM "public"."users" WHERE ("public"."users"."email" = $1 AND 1=1) LIMIT $2 OFFSET $3
+prisma:query COMMIT
+prisma:query BEGIN
+prisma:query DEALLOCATE ALL
+prisma:query UPDATE "public"."users" SET "id" = $1, "emailVerified" = $2 WHERE ("public"."users"."id" = $3 AND 1=1) RETURNING "public"."users"."id", "public"."users"."name", "public"."users"."email", "public"."users"."emailVerified", "public"."users"."image"
+prisma:query COMMIT
+ GET /api/auth/callback/email?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2Fdashboard&token=4724a873af4815afaabcfdc15a7ba62589a3d96fc85612a1fd8745d4552a4db2&email=james.a.whalen%40datadesignresources.com 302 in 931ms
+ GET /dashboard 200 in 97ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 818ms (1141 modules)
+ GET /default-avatar.png 404 in 1169ms
+ ⨯ The requested resource isn't a valid image for /default-avatar.png received text/html; charset=utf-8
+ GET /api/auth/session 200 in 67ms
+ GET /api/auth/session 200 in 27ms
+ GET /default-avatar.png 404 in 46ms
+ ⨯ The requested resource isn't a valid image for /default-avatar.png received text/html; charset=utf-8
+ GET /dashboard 200 in 82ms
+ GET /default-avatar.png 404 in 34ms
+ ⨯ The requested resource isn't a valid image for /default-avatar.png received text/html; charset=utf-8
+ GET /api/auth/session 200 in 56ms
+ GET /api/auth/session 200 in 27ms
+ GET /dashboard 200 in 44ms
+ GET /default-avatar.png 404 in 45ms
+ ⨯ The requested resource isn't a valid image for /default-avatar.png received text/html; charset=utf-8
+ GET /api/auth/session 200 in 43ms
+ GET /api/auth/session 200 in 34ms
+ ⚠ Found a change in next.config.js. Restarting the server to apply the changes...
+  ▲ Next.js 14.2.15
+  - Local:        http://localhost:3000
+  - Environments: .env.local, .env
+
+ ✓ Starting...
+ ✓ Ready in 19s
+ ○ Compiling /login ...
+ ✓ Compiled /login in 6.6s (1137 modules)
+ GET /login?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2Fdashboard 200 in 7348ms
+ ⚠ The "images.domains" configuration is deprecated. Please use "images.remotePatterns" configuration instead.
+ ○ Compiling /_not-found ...
+ ✓ Compiled /api/auth/[...nextauth] in 5.2s (1146 modules)
+ ✓ Compiled in 1ms (707 modules)
+ ✓ Compiled in 363ms (1132 modules)
+ GET /default-avatar.png 404 in 6290ms
+ ⨯ The requested resource isn't a valid image for /default-avatar.png received text/html; charset=utf-8
+ GET /login?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2Fdashboard&_rsc=1yfhh 200 in 1109ms
+ GET /api/auth/session 200 in 5783ms
+ GET /api/auth/session 200 in 93ms
+ ✓ Compiled in 474ms (1146 modules)
+ GET /login?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2Fdashboard&_rsc=1yfhh 200 in 153ms
+ GET /login?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2Fdashboard 200 in 122ms
+ GET /default-avatar.png 404 in 35ms
+ ⨯ The requested resource isn't a valid image for /default-avatar.png received text/html; charset=utf-8
+ GET /api/auth/session 200 in 51ms
+ GET /api/auth/session 200 in 42ms
+[?25h

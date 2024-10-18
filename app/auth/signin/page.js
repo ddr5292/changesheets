@@ -9,7 +9,9 @@ function SignInContent() {
   const callbackUrl = searchParams.get('callbackUrl') || '/dashboard'
   const error = searchParams.get('error')
 
-  console.log('SignIn page loaded. CallbackUrl:', callbackUrl, 'Error:', error)
+  if (error) {
+    console.log('SignIn page error:', error, 'CallbackUrl:', callbackUrl)
+  }
 
   return <LoginForm callbackUrl={callbackUrl} />
 }
